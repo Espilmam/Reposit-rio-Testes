@@ -20,6 +20,7 @@ public class UC01RegistraEmprestimoDeLivro {
 	static private Usuario usuario;
 	static private ServicoEmprestimo servico;
 	static private Emprestimo emprestimo;
+	static private ObtemLivro obtemLivro;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
