@@ -5,6 +5,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import br.emprestimo.dadosDeTeste.ObtemLivro;
 import br.emprestimo.modelo.Emprestimo;
 import br.emprestimo.modelo.Livro;
 import br.emprestimo.modelo.Usuario;
@@ -23,10 +24,7 @@ public class UC01RegistraEmprestimoDeLivro {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		//cenario
-		livro = new Livro();
-		livro.setIsbn("121212");
-		livro.setTitulo("Engenharia de Software");
-		livro.setAutor("Pressman");
+		livro = ObtemLivro.comDadosValidos();
 		usuario = new Usuario();
 		usuario.setRa("11111");
 		usuario.setNome("Jose da Silva");
@@ -69,14 +67,24 @@ public class UC01RegistraEmprestimoDeLivro {
 	}
 	@Test
 	public void CT06UC01FB_registrar_emprestimo_com_data_invalida() {
-		assertFalse(emprestimo.validaData("30/02/2000"));
+		
+		Emprestimo emprestimo2 = new Emprestimo();
+		
+		try {
+			
+			emprestimo2.setDataEmprestimo("30/02/2000");	
+		} 
+		catch (Exception e) {
+			
+			assertFalse(emprestimo.validaData("30/02/2000"));
+		}
 	}
 	@Test
 	public void CT07UC01FB_registrar_emprestimo_com_data_valida() {
 		assertTrue(emprestimo.validaData("29/03/2000"));
 	}
 	@Test(expected=RuntimeException.class)
-	public void CT06UC01_registrar_emprestimo_nulo() {
+	public void CT09UC01_registrar_emprestimo_nulo() {
 		
 		emprestimo.setLivro(null);
 	}

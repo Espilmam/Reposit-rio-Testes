@@ -9,6 +9,11 @@ public class Usuario {
 	}
 
 	public void setRa(String ra) {
+		
+		if (ra == null | ra == "") {
+			
+			throw new RuntimeException("RA invalido");
+		}
 		this.ra = ra;
 	}
 
@@ -17,6 +22,11 @@ public class Usuario {
 	}
 
 	public void setNome(String nome) {
+		
+		if (nome == null | nome == "") {
+			
+			throw new RuntimeException("Nome invalido");
+		}
 		this.nome = nome;
 	}
 
