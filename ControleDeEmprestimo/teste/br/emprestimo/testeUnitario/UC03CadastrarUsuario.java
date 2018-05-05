@@ -6,11 +6,13 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import br.emprestimo.modelo.Emprestimo;
 import br.emprestimo.modelo.Usuario;
 
 public class UC03CadastrarUsuario {
 	
 	public static Usuario usuario;
+	public static Emprestimo emprestimo;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -53,4 +55,10 @@ public class UC03CadastrarUsuario {
 		
 		assertTrue(resultadoEsperado.equals(usuario));
 	}
+	@Test(expected = RuntimeException.class)
+	public void CT06UC03CadastraUsuario_verifica_usuario_nulo() {
+		
+		emprestimo.setUsuario(null);
+	}
+	
 }

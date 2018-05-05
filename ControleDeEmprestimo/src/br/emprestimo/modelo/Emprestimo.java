@@ -33,6 +33,11 @@ public class Emprestimo {
 	}
 
 	public void setUsuario(Usuario usuario) {
+		
+		if (usuario == null) {
+			
+			throw new RuntimeException("Usuário inválido");
+		}
 		this.usuario = usuario;
 	}
 
